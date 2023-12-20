@@ -13,7 +13,7 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'pattern': "url('/hero-overlay-bg-2.jpg')",
-        'hero-bg': "url('/hero-overlay-bg.jpg')",        
+        'hero-bg': "url('/sports-car-front-plain.png')",        
       },
     },
   },
