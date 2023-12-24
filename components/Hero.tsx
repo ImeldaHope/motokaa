@@ -1,6 +1,6 @@
-import React from 'react'
-import Image from 'next/image'
-import { HeroInput } from '.'
+import React from 'react';
+import Image from 'next/image';
+import { HeroInput } from '.';
 
 const Hero = () => {
   return (
@@ -22,9 +22,8 @@ const Hero = () => {
         <HeroInput />
         
       </div>
-    
     </>
-  )
+  );
 }
 
-export default Hero
+export default Hero;
