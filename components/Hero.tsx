@@ -5,7 +5,7 @@ import { HeroInput } from '.';
 const Hero = () => {
   return (
     <>
-      <div className='flex flex-col justify-center items-center border-b border-[#e77924] bg-hero-bg bg-no-repeat bg-center bg-contain'>
+      <div className='flex flex-col sm:flex-wrap justify-center items-center border-b border-[#e77924] bg-hero-bg bg-no-repeat bg-center bg-contain'>
         
         <div className='flex justify-between my-20'>
           <div className='flex flex-wrap gap-y-5 '>

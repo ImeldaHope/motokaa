@@ -27,13 +27,13 @@ const CarCard = ({car}:CarCardProps) => {
             <div className='w-full flex justify-between items-start gap-2'>
                 <h2 className='text-[22px] leading-[26px] font-bold capitalize text-black'>{make} {model}</h2>
             </div>
-            <p className='flex mt-3 mb-10 text-[32px] font-extrabold text-black'>
+            <p className='flex mb-6 text-[32px] font-extrabold text-black'>
                 <span className='self-start text-[14px] font-semibold'> $ </span>
                 {carRent}
                 <span className='self-end text-[14px] font-medium'> /day </span>
             </p>
             <div className='relative flex w-full mt-2'>
-                <div className='flex group-hover:invisible w-full justify-between text-black'>
+                <div className='flex flex-wrap group-hover:invisible w-full justify-between text-black'>
                     <div className='flex flex-col justify-center items-center gap-2'>
                         <Image src='/steering-wheel.svg' alt='steering wheel' width={20} height={20}/>
                         <p className='text-[14px]'>{transmission === 'a'? 'Automatic' : 'Manual'}</p>
@@ -50,7 +50,7 @@ const CarCard = ({car}:CarCardProps) => {
                 <div className='hidden group-hover:flex absolute bottom-0 w-full z-10'>
                     <CustomButton 
                         title='View More'
-                        containerStyles='w-full py-[16px] rounded-full bg-[#e77924]'
+                        containerStyles='w-full flex flex-wrap items-center py-[16px] pr-5 rounded-full bg-[#e77924]'
                         textStyles='text-white text-[14px] leading-[17px] font-bold'
                         rightIcon='/right-arrow.svg' 
                         handleClick={() => setIsOpen(true)}/>

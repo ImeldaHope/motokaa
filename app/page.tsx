@@ -16,14 +16,14 @@ export default async function Home({searchParams}) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-10">      
       <Hero/>
-      <div className='mt-12 px-16 md:px-6 py-4 max-width' id="discover">
+      <div className='mt-12 md:px-16 py-4 max-w-[1440px] mx-auto' id="discover">
         <div className='flex flex-col items-start justify-start gap-y-2.5 text-black-100'>
           <h1 className='text-4xl font-extrabold'>Car Catalogue</h1>
           <p>Discover the cars that suit your preferences.</p>
         </div>
-        <div className='mt-12 w-full flex-between items-center flex-wrap gap-5'>
+        <div className=' flex flex-wrap flex-between items-center w-full mt-10 gap-5  '>
           <SearchBar />
-          <div className='flex justify-start flex-wrap items-center gap-2 text-black'>
+          <div className='flex flex-wrap justify-start items-center gap-2 text-black'>
             <CustomFilter title="fuel" options={fuels}/>
             <CustomFilter title="year" options={yearsOfProduction}/>
           </div>          
@@ -31,7 +31,7 @@ export default async function Home({searchParams}) {
 
         { !isDataEmpty ? (
           <section>
-            <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14'>    
+            <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14 pb-12'>    
               {allCars?.map((car) => (
                 <CarCard car={car}/>
               ))}          

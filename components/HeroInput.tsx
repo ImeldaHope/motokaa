@@ -15,11 +15,11 @@ const HeroInput = () => {
             Choose location:             
             <input type="text" placeholder='Nairobi, Kenya' className='md:mx-3 mx-2 md:p-2 rounded-full text-slate-300'></input>            
           </div>        
-          <div className='md:border-r md:p-5 p-2'>
+          <div className='md:border-r md:p-3 p-2'>
             Pick-up date:
             <input type="date" placeholder='dd/mm/yyyy' className='md:mx-3 mx-2 md:p-2 rounded-full text-slate-300'></input>
           </div>
-          <div className='md:border-r md:p-5 p-2'>
+          <div className='md:border-r md:p-3 p-2'>
             Return date:
             <input type="date" placeholder='dd/mm/yyyy' className='md:mx-3 mx-2 md:p-2 rounded-full text-slate-300'></input>
           </div>          
