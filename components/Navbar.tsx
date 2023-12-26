@@ -23,8 +23,7 @@ const Navbar = () => {
             <CustomButton 
               title='Contact us'
               btnType= 'button'
-              containerStyles='rounded-full bg-[#e77924]'
-              
+              containerStyles='rounded-full bg-[#e77924] my-2'              
               handleClick={handleContact} />                       
         </nav>        
     </header>

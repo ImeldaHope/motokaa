@@ -14,9 +14,9 @@ export default async function Home({searchParams}) {
   const isDataEmpty = !Array.isArray(allCars) || allCars.length <1 || !allCars;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-10">      
+    <main className="flex min-h-screen flex-col items-center justify-between md:px-16 px-8">      
       <Hero/>
-      <div className='mt-12 md:px-16 py-4 max-w-[1440px] mx-auto' id="discover">
+      <div className='mt-12 py-4 max-w-[1440px] mx-auto' id="discover">
         <div className='flex flex-col items-start justify-start gap-y-2.5 text-black-100'>
           <h1 className='text-4xl font-extrabold'>Car Catalogue</h1>
           <p>Discover the cars that suit your preferences.</p>

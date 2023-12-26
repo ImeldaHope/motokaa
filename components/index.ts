@@ -5,7 +5,7 @@ import CustomButton from "./CustomButton";
 import HeroInput from "./HeroInput";
 import CarCard from "./CarCard";
 import CarDetails from "./CarDetails";
-import CarSlider from "./CarSlider";
+import CarSlider from "./Testimonials";
 import CustomFilter from "./CustomFilter";
 import ShowMore from "./ShowMore";
 import SearchBar from "./SearchBar";

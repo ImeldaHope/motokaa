@@ -9,9 +9,9 @@ const HeroInput = () => {
   const handleSearch = () => {};
 
   return (
-    <form className='bg-white bg-opacity-10 w-full md:h-[100px] h-[300px] rounded-full mb-5'>
+    <form id='' className='flex flex-wrap justify-center bg-white bg-opacity-10 w-full md:h-[100px] h-[300px] md:rounded-full rounded-3xl mb-5'>
         <div className='flex md:flex-row flex-col flex-wrap justify-between items-center my-2.5'>    
-          <div className='md:border-r md:p-5 p-2'>
+          <div className='md:border-r md:p-3 p-2'>
             Choose location:             
             <input type="text" placeholder='Nairobi, Kenya' className='md:mx-3 mx-2 md:p-2 rounded-full text-slate-300'></input>            
           </div>        
