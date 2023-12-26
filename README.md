@@ -1,10 +1,10 @@
-## MOTOKAA— Auto elegance with Next.js v14.0.4
+## MOTOKAA — Auto elegance with Next.js v14.0.4
 
 ![Motokaa landing page image](public/motokaa_landing.png)
 ![Motokaa car catalogue](public/car_catalogue.png)
 ![Motokaa testimonials](public/testimonials.png)
 ![Motokaa footer](public/footer.png)
-![Motokaa footer](public/Samsung_s8.png)
+
 
 ## Overview
 
@@ -54,3 +54,7 @@ This project is licensed under the MIT License.
 Thanks to Imagin Studio and CarsByAppNinja for providing APIs that enhance the functionality and content of this car marketplace.
 
 Happy car shopping and selling! 🚗💨
+
+Mobile view:
+
+![Motokaa footer](public/Samsung_s8.png)
