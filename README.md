@@ -1,12 +1,16 @@
-##MOTOKAA— Auto elegance with Next.js v14
+## MOTOKAA— Auto elegance with Next.js v14.0.4
 
 ![Motokaa landing page image](public/motokaa_landing.png)
+![Motokaa car catalogue](public/car_catalogue.png)
+![Motokaa testimonials](public/testimonials.png)
+![Motokaa footer](public/footer.png)
+![Motokaa footer](public/Samsung_s8.png)
 
-##Overview
+## Overview
 
 Welcome to <b>MOTOKAA</b>, a web application built with Next.js v14, using app routes and Tailwind CSS. This platform provides users with the ability to explore, rent, buy, or sell cars. The application integrates with the Imagin Studio API for rich car images and the CarsByAppNinja API for comprehensive car data.
 
-##Features
+## Features
 
 Home Page:
 
@@ -24,7 +28,7 @@ Detailed information about each car, including specifications, pricing, and imag
 
 Seamless process to rent or buy a car directly through the platform.
 
-##Technologies Used
+## Technologies Used
 1. Next.js v14:
 
 Harness the power of the latest Next.js version for optimized performance and improved developer experience.
@@ -41,11 +45,12 @@ Integrate high-quality car images from Imagin Studio to enhance the visual appea
 
 Access comprehensive car data, including specifications, model, and more, from the Cars by API-Ninjas API.
 
-##License
+## License
 
 This project is licensed under the MIT License.
 
-##Acknowledgments
+## Acknowledgments
 
 Thanks to Imagin Studio and CarsByAppNinja for providing APIs that enhance the functionality and content of this car marketplace.
+
 Happy car shopping and selling! 🚗💨
