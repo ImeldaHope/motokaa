@@ -6,59 +6,69 @@ import { useState } from 'react'
 
 import { CarProps } from '@/types'
 import { CarDetails, CustomButton } from '.'
-import { calculateCarRent, generateCarImageUrl } from '@/utils'
+import CarImage from './CarImage'
+import { calculateCarRent } from '@/utils'
 
 interface CarCardProps{
     car:CarProps
 }
 
-const CarCard = ({car}:CarCardProps) => {  
+const CarCard = ({car}:CarCardProps) => {
 
-    const {city_mpg, year, make, model, transmission, drive } = car;
+    const { year, make, model, fuel_type, drive, transmission, city_mpg } = car;
+    const isElectric = fuel_type?.toLowerCase() === 'electricity';
     const [isOpen, setIsOpen] = useState(false);
-    const carRent = calculateCarRent(city_mpg, year)
+    const carRent = calculateCarRent(car);
 
   return (
-    <>
-        <div className='group flex flex-col p-6 justify-center items-start text-black-100 bg-yellow-100 hover:bg-white hover:shadow-md rounded-3xl'>
-            <div className='relative w-full h-40 my-3 object-contain '>
-                <Image src={generateCarImageUrl(car)} alt="car image" fill priority className='object-contain'/>
+    <div className='group flex flex-col p-5 bg-paper border border-ink/8 hover:border-emerald/30 hover:shadow-lift transition-all duration-300 rounded-4xl'>
+        <div className='flex items-start justify-between gap-2'>
+            <div>
+                <div className='flex items-center gap-2'>
+                    <p className='eyebrow text-muted'>{year}</p>
+                    {isElectric ? <span className='eyebrow text-emerald border border-emerald/30 rounded-full px-1.5 py-0.5'>EV</span> : null}
+                </div>
+                <h3 className='mt-1.5 font-display text-xl font-bold capitalize text-ink leading-tight'>{make} {model}</h3>
             </div>
-            <div className='w-full flex justify-between items-start gap-2'>
-                <h2 className='text-[22px] leading-[26px] font-bold capitalize text-black'>{make} {model}</h2>
-            </div>
-            <p className='flex mb-6 text-[32px] font-extrabold text-black'>
-                <span className='self-start text-[14px] font-semibold'> $ </span>
-                {carRent}
-                <span className='self-end text-[14px] font-medium'> /day </span>
+            <p className='font-mono text-ink whitespace-nowrap'>
+                <span className='align-top text-xs text-marigold font-bold'>$</span>
+                <span className='text-2xl font-bold'>{carRent}</span>
+                <span className='text-xs text-muted'>/day</span>
             </p>
-            <div className='relative flex w-full mt-2'>
-                <div className='flex flex-wrap group-hover:invisible w-full justify-between text-black'>
-                    <div className='flex flex-col justify-center items-center gap-2'>
-                        <Image src='/steering-wheel.svg' alt='steering wheel' width={20} height={20}/>
-                        <p className='text-[14px]'>{transmission === 'a'? 'Automatic' : 'Manual'}</p>
-                    </div>
-                    <div className='flex flex-col justify-center items-center gap-2'>
-                        <Image src='/tire.svg' alt='tire' width={20} height={20}/>
-                        <p className='text-[14px]'>{drive.toUpperCase()}</p>
-                    </div>
-                    <div className='flex flex-col justify-center items-center gap-2'>
-                        <Image src='/gas.svg' alt='gas' width={20} height={20}/>
-                        <p> {city_mpg} MPG </p>
-                    </div>                    
+        </div>
+
+        <div className='relative w-full h-44 my-5 rounded-2xl overflow-hidden bg-bone'>
+            <CarImage
+                car={car}
+                className='absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-105'
+            />
+        </div>
+
+        <div className='relative flex w-full mt-auto'>
+            <div className='flex w-full justify-between text-muted group-hover:opacity-0 transition-opacity duration-200'>
+                <div className='flex flex-col items-center gap-1.5'>
+                    <Image src='/steering-wheel.svg' alt='' width={20} height={20}/>
+                    <p className='eyebrow'>{transmission === 'a' ? 'Auto' : 'Manual'}</p>
                 </div>
-                <div className='hidden group-hover:flex absolute bottom-0 w-full z-10'>
-                    <CustomButton 
-                        title='View More'
-                        containerStyles='w-full flex flex-wrap items-center py-[16px] pr-5 rounded-full bg-[#e77924]'
-                        textStyles='text-white text-[14px] leading-[17px] font-bold'
-                        rightIcon='/right-arrow.svg' 
-                        handleClick={() => setIsOpen(true)}/>
+                <div className='flex flex-col items-center gap-1.5'>
+                    <Image src='/tire.svg' alt='' width={20} height={20}/>
+                    <p className='eyebrow'>{drive?.toUpperCase() || '—'}</p>
+                </div>
+                <div className='flex flex-col items-center gap-1.5'>
+                    <Image src='/gas.svg' alt='' width={20} height={20}/>
+                    <p className='eyebrow'>{city_mpg ? `${city_mpg} MPG` : (isElectric ? 'Electric' : '—')}</p>
                 </div>
             </div>
-            <CarDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} car={car}/>
-        </div>          
-    </>
+            <div className='hidden group-hover:flex absolute inset-x-0 bottom-0 z-10'>
+                <CustomButton
+                    title='View details'
+                    containerStyles='w-full justify-center gap-2 py-3.5 rounded-2xl bg-marigold hover:bg-[#d99a00] transition-colors'
+                    textStyles='text-ink text-sm font-display font-bold'
+                    handleClick={() => setIsOpen(true)}/>
+            </div>
+        </div>
+        <CarDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} car={car}/>
+    </div>
   )
 }
 
