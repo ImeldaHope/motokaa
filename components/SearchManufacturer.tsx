@@ -22,23 +22,23 @@ const SearchManufacturer = ({manufacturer, setManufacturer} : SearchManufacturer
                 )))
   return (
     <div className='flex-1 max-sm:w-full flex justify-start items-center'>
-        <Combobox value={manufacturer} onChange={setManufacturer}>
+        <Combobox value={manufacturer} onChange={(value) => setManufacturer(value ?? '')}>
             <div className='relative w-full'>
                 <Combobox.Button className="absolute top-[14px]">
-                    <Image src="/car-logo.svg" width={20} height={20} className="ml-4" alt="Car logo"/>
+                    <Image src="/car-logo.svg" width={20} height={20} className="ml-4 opacity-60" alt=""/>
                 </Combobox.Button>
-                <Combobox.Input 
-                    className="w-full h-[48px] pl-12 p-4 rounded-l-full max-sm:rounded-full bg-light-white outline-none cursor-pointer text-sm" 
-                    placeholder='Volkswagen' 
+                <Combobox.Input
+                    className="w-full h-[48px] pl-12 pr-4 bg-transparent outline-none cursor-text text-sm placeholder:text-ink/40"
+                    placeholder='Make — e.g. Volkswagen'
                     displayValue={(manufacturer:string) => manufacturer}
                     onChange={(e) => setQuery(e.target.value)}/>
-                <Transition 
+                <Transition
                     as={Fragment}
                     leave='transition ease-in duration-100'
                     leaveFrom='opacity-100'
                     leaveTo='opacity-0'
                     afterLeave={() => setQuery('')}>
-                    <Combobox.Options>
+                    <Combobox.Options className='absolute z-20 mt-2 max-h-60 w-full min-w-[200px] overflow-auto rounded-2xl bg-paper py-1.5 text-sm shadow-lift ring-1 ring-ink/10 focus:outline-none'>
                         {/* {filteredManufacturers.length === 0 && query !== "" ?(
                             <Combobox.Option value={query} className='search-manufacturer__option'>
                                 Create "{query}"
@@ -47,10 +47,10 @@ const SearchManufacturer = ({manufacturer, setManufacturer} : SearchManufacturer
                         {    filteredManufacturers.map((item) => (
                                 <Combobox.Option 
                                     key={item} 
-                                    className={({active}) => 
-                                    ` relative cursor-default select-none py-2 pl-10 pr-4 
-                                    ${active ? 'bg-[#e77924] text-black' 
-                                    : 'text-white' }`}
+                                    className={({active}) =>
+                                    ` relative cursor-pointer select-none py-2 pl-10 pr-4
+                                    ${active ? 'bg-emerald text-bone'
+                                    : 'text-ink' }`}
                                     value={item}
                                 >
                                     {({selected, active}) => (

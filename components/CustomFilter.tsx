@@ -22,13 +22,13 @@ const CustomFilter = ({title, options}: CustomFilterProps) => {
     <div className='w-fit'>
       <Listbox value={selected} onChange={(e) => {setSelected(e); handleUpdateParams(e);}}>
         <div className='relative w-fit z-10'>
-          <Listbox.Button className='relative w-full min-w-[127px] flex justify-between items-center cursor-default rounded-lg bg-white py-2 px-3 text-left shadow-md sm:text-sm border'>
-            <span className='block truncate'>{selected.title}</span>
-            <Image src='/chevron-up-down.svg' width={20} height={20} className='ml-4 object-contain' alt='chevron-up-down'/>
+          <Listbox.Button className='relative w-full min-w-[127px] flex justify-between items-center cursor-pointer rounded-full bg-paper border border-ink/10 py-2.5 px-4 text-left text-ink shadow-card sm:text-sm hover:border-emerald/40 transition-colors'>
+            <span className='block truncate font-medium'>{selected.title}</span>
+            <Image src='/chevron-up-down.svg' width={18} height={18} className='ml-3 object-contain' alt=''/>
           </Listbox.Button>
           <Transition as={Fragment} leave='transition ease-in duration-100' leaveFrom='opacity-100' leaveTo='opacity-0'>
-            <Listbox.Options className='absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>{options.map((option) => (
-              <Listbox.Option key={option.title} value={option} className={ ({ active }) => `relative cursor-default select-none py-2 px-4 ${ active? 'bg-[#e77924] text-white' : 'text-gray-900'}`}>
+            <Listbox.Options className='absolute mt-2 max-h-60 w-full overflow-auto rounded-2xl bg-paper py-1.5 text-sm shadow-lift ring-1 ring-ink/10 focus:outline-none'>{options.map((option) => (
+              <Listbox.Option key={option.title} value={option} className={ ({ active }) => `relative cursor-pointer select-none py-2 px-4 ${ active? 'bg-emerald text-bone' : 'text-ink'}`}>
                 {({selected}) => (
                 <span className={`block truncate ${selected? 'font-bold' : 'font-normal'}`}>{option.title}</span>
               )}
