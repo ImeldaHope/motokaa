@@ -17,31 +17,34 @@ export interface SearchManufacturerProps{
     setManufacturer: (manufacturer: string) => void;
 }
 
+// A vehicle in the Motokaa fleet (see constants/fleet). Specs are inline, so
+// there's no separate specs endpoint; images come from CarImages by make/model.
 export interface CarProps{
-    city_mpg: number,
-    combination_mpg: number,
-    cylinders: number,
-    displacement: number,
-    drive: string,
-    fuel_type: string,
-    highway_mpg: number,
-    make: string,
-    model: string,
-    transmission: string,
-    year: number
-    class: string,
+    make: string,          // "toyota"
+    model: string,         // "corolla"
+    year: number,
+    class: string,         // body class, e.g. "midsize car" | "suv"
+    fuel_type: string,     // "gas" | "electricity" | "diesel"
+    drive: string,         // "fwd" | "rwd" | "awd" | "4wd"
+    transmission: string,  // "a" | "m"
+    cylinders?: number,
+    displacement?: number, // engine litres
+    city_mpg?: number,
+    highway_mpg?: number,
+    combination_mpg?: number,
 }
 
 export interface FilterProps{
     manufacturer: string,
-    year: number,
+    year?: number | string,
     fuel: string,
     limit: number,
     model: string,
 }
 
 export interface HomeProps {
-  searchParams: FilterProps;
+  // Next 16: searchParams is async and must be awaited.
+  searchParams: Promise<FilterProps>;
 }
 
 export interface OptionsProps{

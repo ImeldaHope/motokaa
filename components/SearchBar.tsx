@@ -51,16 +51,16 @@ const SearchBar = () => {
     }
 
   return (
-    <form className='flex items-center justify-start max-sm:flex-col w-full relative max-sm:gap-4 max-w-3xl text-black' onSubmit={handleSearch}>
+    <form className='flex items-center justify-start max-sm:flex-col w-full relative max-sm:gap-3 max-w-3xl text-ink bg-paper border border-ink/10 rounded-full max-sm:rounded-3xl shadow-card p-1.5 pr-2' onSubmit={handleSearch}>
         <div className='flex-1 max-sm:w-full flex justify-start items-center relative'>
             <SearchManufacturer
                 manufacturer={manufacturer}
                 setManufacturer={setManufacturer} />
             <SearchButton otherClasses='sm:hidden'/>
         </div>
-        <div className='flex-1 max-sm:w-full flex justify-start items-center relative'>
-          <Image src='/model-icon.png' width={25} height={25} className='absolute w-[20px] h-[20px] ml-4' alt='car model'/>
-          <input type='text' name='model' value={model} onChange={(e) => setModel(e.target.value)} placeholder='Tiguan' className='w-full h-[48px] pl-12 p-4 rounded-r-full max-sm:rounded-full outline-none cursor-pointer text-sm' />
+        <div className='flex-1 max-sm:w-full flex justify-start items-center relative sm:border-l sm:border-ink/10'>
+          <Image src='/model-icon.png' width={20} height={20} className='absolute w-[20px] h-[20px] ml-4 opacity-60' alt=''/>
+          <input type='text' name='model' value={model} onChange={(e) => setModel(e.target.value)} placeholder='Model — e.g. Tiguan' className='w-full h-[48px] pl-12 pr-4 bg-transparent outline-none cursor-text text-sm placeholder:text-ink/40' />
           <SearchButton otherClasses='sm:hidden'/>
         </div>
         <SearchButton otherClasses='max-sm:hidden'/>

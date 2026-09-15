@@ -4,45 +4,54 @@ import { fuels, yearsOfProduction } from '@/constants';
 import { HomeProps } from "@/types";
 
 export default async function Home({searchParams}: HomeProps) {
+  const params = await searchParams;
+  const limit = Number(params.limit) || 10;
+
   const allCars = await fetchCars({
-    manufacturer: searchParams.manufacturer || '',
-    year: searchParams.year || 2022,
-    fuel: searchParams.fuel || '',
-    limit: searchParams.limit || 10,
-    model: searchParams.model || ''
+    manufacturer: params.manufacturer || '',
+    year: params.year,
+    fuel: params.fuel || '',
+    limit,
+    model: params.model || ''
   });
 
   const isDataEmpty = !Array.isArray(allCars) || allCars.length <1 || !allCars;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between md:px-16 px-8">      
+    <main className="flex min-h-screen flex-col items-center md:px-16 px-6">
       <Hero/>
-      <div className='mt-12 py-4 max-w-[1440px] mx-auto' id="discover">
-        <div className='flex flex-col items-start justify-start gap-y-2.5 text-black-100'>
-          <h1 className='text-4xl font-extrabold'>Car Catalogue</h1>
-          <p>Discover the cars that suit your preferences.</p>
+      <div className='w-full mt-20 md:mt-28 max-w-[1440px] mx-auto' id="discover">
+        <div className='flex flex-col items-start gap-y-3'>
+          <p className='eyebrow text-emerald flex items-center gap-2.5'>
+            <span className='dial-mark' aria-hidden />
+            The fleet
+          </p>
+          <h2 className='font-display font-extrabold text-4xl md:text-5xl text-ink'>Car catalogue</h2>
+          <p className='text-muted text-base md:text-lg'>Browse what is on the road right now — filter down to the one that fits.</p>
         </div>
-        <div className=' flex flex-wrap flex-between items-center w-full mt-10 gap-5  '>
+
+        <div className='flex flex-wrap items-center justify-between w-full mt-10 gap-5'>
           <SearchBar />
-          <div className='flex flex-wrap justify-start items-center gap-2 text-black'>
+          <div className='flex flex-wrap justify-start items-center gap-2'>
             <CustomFilter title="fuel" options={fuels}/>
             <CustomFilter title="year" options={yearsOfProduction}/>
-          </div>          
+          </div>
         </div>
 
         { !isDataEmpty ? (
           <section>
-            <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14 pb-12'>    
-              {allCars?.map((car) => (
-                <CarCard car={car}/>
-              ))}          
+            <div className='grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-6 pt-14 pb-12'>
+              {allCars?.map((car, index) => (
+                <CarCard key={`${car.make}-${car.model}-${car.year}-${index}`} car={car}/>
+              ))}
             </div>
-            <ShowMore pageNumber = {(searchParams.limit || 10) / 10} isNext={(searchParams.limit || 10) > allCars.length}/>
+            <ShowMore pageNumber={limit / 10} isNext={limit > allCars.length}/>
           </section>
         ):(
-          <div className='mt-16 flex justify-center items-center flex-col gap-2'>
-            <h2 className='text-black text-xl font-bold'> Ooops, we have no results</h2>
-            <p>{allCars?.message}</p>
+          <div className='mt-16 mb-8 flex flex-col items-center justify-center gap-3 text-center border border-ink/10 rounded-4xl py-16 bg-paper'>
+            <span className='dial-mark' aria-hidden />
+            <h3 className='font-display text-ink text-2xl font-bold'>No cars match that search — yet</h3>
+            <p className='text-muted max-w-sm'>Try a different make, year or fuel type, or clear a filter to see the full fleet.</p>
           </div>
         )}
       </div>
